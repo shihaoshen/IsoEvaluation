@@ -45,6 +45,13 @@
     ./jum_star_2ndpass_clean.sh
     qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-1:1 jum.sh
 
+#Run majiq
+
+    majiq build ensembl.hg19.gff3 -c settings.ini -j 1 -o output/
+    majiq psi output/PC3E-1_STARAligned.out.sort.majiq output/PC3E-2_STARAligned.out.sort.majiq output/PC3E-3_STARAligned.out.sort.majiq output/GS689.LI-1_STARAligned.out.sort.majiq output/GS689.LI-2_STARAligned.out.sort.majiq output/GS689.LI-3_STARAligned.out.sort.majiq -j 2 -o output/ -n g
+    majiq deltapsi -grp1 output/PC3E-1_STARAligned.out.sort.majiq output/PC3E-2_STARAligned.out.sort.majiq output/PC3E-3_STARAligned.out.sort.majiq -grp2 output/GS689.LI-1_STARAligned.out.sort.majiq output/GS689.LI-2_STARAligned.out.sort.majiq output/GS689.LI-3_STARAligned.out.sort.majiq -j 2 -o output/ -n pc3e gs689 --default-prior
+    voila deltapsi output/pc3e_gs689.deltapsi.voila -s output/splicegraph.sql -o output/
+
 #Match turbo, ISO, majiq, leafcutter and jum
 
     #match the ISO and rMATS results in the simulation data
