@@ -36,3 +36,27 @@
     python /mnt/isilon/xing_lab/shens/bin/github/leafcutter/clustering/leafcutter_cluster.py -j test_juncfiles.txt -m 50 -o leafcutter_output -l 500000
     # Differential splicing analysis.
     /mnt/isilon/xing_lab/shens/bin/github/leafcutter/scripts/leafcutter_ds.R --num_threads 4 leafcutter_output/leafcutter_output_perind_numers.counts.gz simu_reads/groups_file.txt -i 3
+    
+#Run JUM
+
+    qsub -pe smp 3 -l h_vmem=20G -l m_mem_free=20G -t 1-6:1 jum_star.sh
+    ./jum_star_clean.sh
+    qsub -pe smp 3 -l h_vmem=20G -l m_mem_free=20G -t 1-6:1 jum_star_2ndpass.sh
+    ./jum_star_2ndpass_clean.sh
+    qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-1:1 jum.sh
+
+#Match turbo, ISO, majiq, leafcutter and jum
+
+    #match the ISO and rMATS results in the simulation data
+    #this has the min rMATS p value of the module
+    python findASM.py events.txt eventsp.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2SE.112319.txt
+
+    #match the ISO and majiq results in the simulation data
+    python findASM_majiq.py events_majiq.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2majiq.102218.txt
+
+    #match the ISO and leafcutter results in the simulation data
+    python findASM_leafcutter.py events_leafcutter.txt eventsp_leafcutter.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2leafcutter.102218.txt
+
+    #match the ISO and leafcutter results in the simulation data
+    python findASM_jum.py events_jum.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2jum.102218.txt
+
