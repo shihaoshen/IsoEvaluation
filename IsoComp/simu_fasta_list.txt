@@ -1,0 +1,6 @@
+/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/simu_fasta/low/GS689.LI-1Aligned.sort.bam.fasta
+/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/simu_fasta/low/GS689.LI-2Aligned.sort.bam.fasta
+/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/simu_fasta/low/GS689.LI-3Aligned.sort.bam.fasta
+/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/simu_fasta/low/PC3E-1Aligned.sort.bam.fasta
+/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/simu_fasta/low/PC3E-2Aligned.sort.bam.fasta
+/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/simu_fasta/low/PC3E-3Aligned.sort.bam.fasta

@@ -1,0 +1,1 @@
+/mnt/isilon/xing_lab/shens/rMATS-iso-bak/Simulation/rMATS-ISO_Flux_Simulation/majiq/output/pc3e_gs689.deltapsi.tsv

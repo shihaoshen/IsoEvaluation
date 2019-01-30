@@ -1,0 +1,6 @@
+GS689.LI-1Aligned.sort.bam.fasta
+GS689.LI-2Aligned.sort.bam.fasta
+GS689.LI-3Aligned.sort.bam.fasta
+PC3E-1Aligned.sort.bam.fasta
+PC3E-2Aligned.sort.bam.fasta
+PC3E-3Aligned.sort.bam.fasta
