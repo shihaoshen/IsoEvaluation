@@ -51,6 +51,11 @@
     majiq psi output/PC3E-1_STARAligned.out.sort.majiq output/PC3E-2_STARAligned.out.sort.majiq output/PC3E-3_STARAligned.out.sort.majiq output/GS689.LI-1_STARAligned.out.sort.majiq output/GS689.LI-2_STARAligned.out.sort.majiq output/GS689.LI-3_STARAligned.out.sort.majiq -j 2 -o output/ -n g
     majiq deltapsi -grp1 output/PC3E-1_STARAligned.out.sort.majiq output/PC3E-2_STARAligned.out.sort.majiq output/PC3E-3_STARAligned.out.sort.majiq -grp2 output/GS689.LI-1_STARAligned.out.sort.majiq output/GS689.LI-2_STARAligned.out.sort.majiq output/GS689.LI-3_STARAligned.out.sort.majiq -j 2 -o output/ -n pc3e gs689 --default-prior
     voila deltapsi output/pc3e_gs689.deltapsi.voila -s output/splicegraph.sql -o output/
+    
+#Calculate true psi for ISO modules from Flux simulation parameters
+
+    cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/truepsi_iso
+    qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro.sh
 
 #Match turbo, ISO, majiq, leafcutter and jum
 
