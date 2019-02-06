@@ -6,7 +6,7 @@
 
     qsub -l h_vmem=60G -l m_mem_free=60G iso.sh
     
-#statistical test between EM samples
+#Prepare the samples for statistical test between EM samples
 
     cd /mnt/isilon/xing_lab/shens/ISO_ReRun/CCLE/em_stat
     
@@ -36,9 +36,8 @@
      E  M
     16  8
 
-    
-    #copy the ISO samples into each folder
+# Copy the ISO samples into each folder
     python sampleEMT.py
     
-    #ISO statistical analysis between E and M samples in 7 tissues
+# ISO statistical analysis between E and M samples in 7 tissues
     qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-7:1 iso_ccle.sh
