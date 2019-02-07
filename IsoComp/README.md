@@ -53,9 +53,11 @@
     voila deltapsi output/pc3e_gs689.deltapsi.voila -s output/splicegraph.sql -o output/
     
 #Calculate true psi for ISO modules from Flux simulation parameters
+#Revision 02/07/19: Require the total read counts of all isoforms that are averaged among the replicates to be greater than 10
 
     cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/truepsi_iso
     qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro.sh
+    python isopsidiff.py isopsidiff.txt
 
 #Match turbo, ISO, majiq, leafcutter and jum
 
