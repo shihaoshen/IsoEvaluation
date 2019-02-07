@@ -24,9 +24,9 @@ plot_roc=function(x,true,color){
 	roc(pred,as.factor(true_na))
 	print(auc(roc(pred,as.factor(true_na))))
 }
-	
+
 #roc for iso
-data=read.table('simu_res.txt',header=T,sep='\t')
+data=read.table('simu_res_10isocount_v2.txt',header=T,sep='\t')
 true = rep(NA,length(data[,7]))
 true[abs(data[,7]) > 0.1]=1
 true[abs(data[,7]) < 0.01]=0
@@ -36,10 +36,11 @@ label=c('ISO','turbo','majiq','leafcutter','jum');
 pdf('rMATS_ISO_Flux_roc.pdf');
 plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate')
 
-for (i in 1:5){
+for (i in c(1:2,4)){
 	plot_roc(data[,column[i]],true,color[i]);
+}
+for (i in c(3,5)){
+	plot_roc(1-data[,column[i]],true,color[i]);
 }
 legend(x=0.6,y=0.3,legend=label,col=color,lty=1);
 dev.off()
-
-
