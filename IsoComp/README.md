@@ -78,4 +78,4 @@
 
     Rscript roc.R
 
-![alt text](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc.jpg)
+![alt text](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc.png)
