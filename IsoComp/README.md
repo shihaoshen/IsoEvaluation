@@ -46,6 +46,8 @@
     qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-1:1 jum.sh
 
 #Run majiq
+1. By default majiq only outputs the events likely to have splicing changes, I add 'show-all' option to output all events.
+2. majiq default posterior probability is for P(|delta psi|>0.2), I change it to P(|delta psi|>0.1).
 
     majiq build ensembl.hg19.gff3 -c settings.ini -j 1 -o output/
     majiq psi output/PC3E-1_STARAligned.out.sort.majiq output/PC3E-2_STARAligned.out.sort.majiq output/PC3E-3_STARAligned.out.sort.majiq output/GS689.LI-1_STARAligned.out.sort.majiq output/GS689.LI-2_STARAligned.out.sort.majiq output/GS689.LI-3_STARAligned.out.sort.majiq -j 2 -o output/ -n g
