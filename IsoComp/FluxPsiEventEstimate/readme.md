@@ -1,6 +1,6 @@
 #This script outputs the psi estimate from Flux simulation and check whether the module is SE or ASS by GTF annotation
 
-qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro2.sh
+    qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro2.sh
 
 #Details:
 
