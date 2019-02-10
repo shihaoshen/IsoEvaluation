@@ -68,8 +68,6 @@ ilines=ifile.readlines();
 ofile=open(sys.argv[3],'w');
 ofile.write('ASMID\tMatch\tSE\tA3SS\tA5SS\tMXE\tSEFDR5\tA3SSFDR5\tA5SSFDR5\tMXEFDR5\tPmin\n')
 IncEvent = []; SkpEvent=[]; thisASM = '';
-#Signficant cutoff for SE, A3SS, A5SS, MXE
-FDRCut = [0.0000631470588356,0.0000289591477134,0.000663722761454,0.000086155609442]
 for i in ilines:
 	elements=re.findall('[^\t\n\r]+',i);
 	if 'ASM#' in elements[0]:
@@ -86,16 +84,16 @@ for i in ilines:
 			eventoutput = '';
 			for j in event:
 				eventoutput += '\t'+str(j);										
-			p = [0,0,0,0]; pmin = 1;
+			p = [0,0,0,0]; pmax = 0;
 			for j in thisEvent:
 				thisoutput += j+',';
 				elements2 = re.findall('[^_]+',j);
 				for k in range(len(type_list)):
 					if elements2[0] == type_list[k]:
-						pmin = min(pmin, float(elements2[2]))
-						print(float(elements2[2]));
-						print(min(pmin, float(elements2[2])));
-						print('===');
+						pmax = max(pmax, float(elements2[2]))
+						#print(float(elements2[2]));
+						#print(min(pmin, float(elements2[2])));
+						#print('===');
 						if float(elements2[2]) <= FDRCut[k]:
 							p[k] += 1;
 			poutput = '';
@@ -105,7 +103,7 @@ for i in ilines:
 				thisoutput = thisoutput[:-1];
 			else:
 				thisoutput = 'NA';
-			ofile.write(thisoutput+eventoutput+poutput+'\t'+str(pmin)+'\n');
+			ofile.write(thisoutput+eventoutput+poutput+'\t'+str(pmax)+'\n');
 		#write information for the current ASM
 		thisASM = elements[0];	iscoord = 1;
 		IncEvent = []; SkpEvent=[];
