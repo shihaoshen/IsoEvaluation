@@ -13,13 +13,13 @@
     python /mnt/isilon/xing_lab/shens/bin/github/rMATS-ISO/rMATS-ISO.py module --gtf $gtf --bam $list -o iso_simu_output/ >iso_log.txt 2>iso_log_error.txt
     python /mnt/isilon/xing_lab/shens/bin/github/rMATS-ISO/rMATS-ISO.py stat --bam $list -o iso_simu_output/ >iso_stat_log.txt 2>iso_stat_log_error.txt
     
-#Run rMATS with splicing difference c cutoff = 0.1
+#Run rMATS with splicing difference c cutoff = 1% (gold standard null)
   
     GTF=/mnt/isilon/xing_lab/shens/Annotation/Homo_sapiens.GRCh37.87.new.gtf
     TMP=/mnt/isilon/xing_lab/shens/ISO_ReRun/rMATS-iso-bak/Simulation/rMATS-ISO_Flux_Simulation/tmp
     OD=/mnt/isilon/xing_lab/shens/ISO_ReRun/rMATS-iso-bak/Simulation/rMATS-ISO_Flux_Simulation/od
     BAM=/mnt/isilon/xing_lab/shens/ISO_ReRun/rMATS-iso-bak/Simulation/
-    python /mnt/isilon/xing_lab/shens/bin/github/rmats_pipeline/rmats.py --b1 $BAM/bam1.list --b2 $BAM/bam2.list --gtf $GTF --od $OD --tmp $TMP --readLength 101 --cstat 0.1 --task both
+    python /mnt/isilon/xing_lab/shens/bin/github/rmats_pipeline/rmats.py --b1 $BAM/bam1.list --b2 $BAM/bam2.list --gtf $GTF --od $OD --tmp $TMP --readLength 101 --cstat 0.01 --task both
 
 #Run leafcutter
 
