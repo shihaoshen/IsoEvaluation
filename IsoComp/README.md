@@ -76,9 +76,15 @@
     #match the ISO and leafcutter results in the simulation data
     python findASM_jum.py events_jum.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2jum.102218.txt
 
-#Roc of all modules, modules of SE events, and modules of ASS events
+#Roc of all modules, modules of SE events, and modules of ASS events. 
+Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
+
+
 
     Rscript roc.R
+
+
+[ROC ](https://www.google.com)
 
 ![](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc.png)
 
