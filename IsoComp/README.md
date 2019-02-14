@@ -61,6 +61,8 @@
     qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro.sh
     #get glmm logistic regression p value for the isoform with largest difference
     python isopsidiff.py isopsidiff10glmm.txt 1
+    #get t-test p value for Flux psi estimates
+    python isopsidiff_ttest.py isopsidiff10_ttest.txt 1
 
 #Match turbo, ISO, majiq, leafcutter and jum
 
