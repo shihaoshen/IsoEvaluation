@@ -89,14 +89,20 @@ Gold standard H1: |delta psi| > 10%. Gold standard H0: |delta psi|<1%. Gold stan
 [ROC with rMATS-turbo JCEC](https://drive.google.com/file/d/1OkNNK6fx0A0MS7pPVNLxplLfOZkKfVf6/view?usp=sharing)
 
 
-Gold standard H1: GLMM logistic of Flux counts P < 0.005. Gold standard H0: logistic P > 0.95, |delta psi|<1%. GLMM calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
+Gold standard H1: GLMM logistic of Flux counts P < 0.005. Gold standard H0: logistic P > 0.5, |delta psi|<1%. GLMM calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
 
     Rscript roc_logit.R
 
 [ROC with rMATS-turbo JC, logistic gold standard](https://drive.google.com/open?id=1zDU43xx0j9QB8hLYCxRIz0fA-pUf9cJM)
 
+
+
+Gold standard H1: T-test of Flux psi P < 0.05. Gold standard H0: logistic P > 0.5, |delta psi|<1%. GLMM calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
+
+    Rscript roc_ttest.R
+
+[ROC with rMATS-turbo JC, ttest gold standard](https://drive.google.com/file/d/17pIHZw17XgQV1Irxp9L-LxN_uz_eIzBS/view?usp=sharing)
+
 ![](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc.png)
 
 ![](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc_SE.png)
-
-
