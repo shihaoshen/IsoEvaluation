@@ -59,7 +59,8 @@
 
     cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/truepsi_iso
     qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro.sh
-    python isopsidiff.py isopsidiff.txt
+    #get glmm logistic regression p value for the isoform with largest difference
+    python isopsidiff.py isopsidiff10glmm.txt 1
 
 #Match turbo, ISO, majiq, leafcutter and jum
 
