@@ -60,11 +60,11 @@ color=c('black','red','blue','green','brown');
 title=' | AUC | TPR at 1% FPR | 5% | 10%'
 label=c('rMATS-ISO','rMATS-turbo','majiq','leafcutter','jum');
 pdf('rMATS_ISO_Flux_roc.pdf');
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='Gold Standard Filtered by Total Count >=10\nH1 GLMM ttest P 0.05; H0 P >0.5, delta psi <0.01');
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='Gold Standard Filtered by Total Count >=10\nH1 ttest P 0.05; H0 P >0.5, delta psi <0.01');
 
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
 for (i in 1:5){
-    if (i %in% c(1:2,4)){d = data[,column[i]];
+    if (i %in% c(1:2,4:5)){d = data[,column[i]];
         }else{d = 1 - data[,column[i]];}
 	tmp = plot_roc(d,true,color[i]);
     auc=c(auc, tmp[1]); tpr1=c(tpr1,tmp[2]); tpr5=c(tpr5,tmp[3]); tpr10=c(tpr10,tmp[4]);
@@ -74,9 +74,9 @@ legend(x=0.3,y=0.3,legend=c(title,newlabel),col=c('white',color),lty=1);
 
 #SE event only
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='SE only\nH1 GLMM ttest P 0.05; H0 P >0.5, delta psi <0.01');
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='SE only\nH1 ttest P 0.05; H0 P >0.5, delta psi <0.01');
 for (i in 1:5){
-    if (i %in% c(1:2,4)){d = data[,column[i]];
+    if (i %in% c(1:2,4:5)){d = data[,column[i]];
         }else{d = 1 - data[,column[i]];}
 	tmp = plot_roc(d[data[,12]=='SE'],true[data[,12]=='SE'],color[i]);
     auc=c(auc, tmp[1]); tpr1=c(tpr1,tmp[2]); tpr5=c(tpr5,tmp[3]); tpr10=c(tpr10,tmp[4]);
@@ -87,9 +87,9 @@ legend(x=0.3,y=0.3,legend=c(title,newlabel),col=c('white',color),lty=1);
 
 #ASS event only
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='ASS only\nH1 GLMM ttest P 0.05; H0 P >0.5, delta psi <0.01');
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='ASS only\nH1 ttest P 0.05; H0 P >0.5, delta psi <0.01');
 for (i in 1:5){
-    if (i %in% c(1:2,4)){d = data[,column[i]];
+    if (i %in% c(1:2,4:5)){d = data[,column[i]];
         }else{d = 1 - data[,column[i]];}
 	tmp=plot_roc(d[data[,12]=='ASS'],true[data[,12]=='ASS'],color[i]);
     auc=c(auc, tmp[1]); tpr1=c(tpr1,tmp[2]); tpr5=c(tpr5,tmp[3]); tpr10=c(tpr10,tmp[4]);
@@ -100,9 +100,9 @@ legend(x=0.3,y=0.3,legend=c(title,newlabel),col=c('white',color),lty=1);
 
 #SE + ASS event only
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='SE and ASS\nH1 GLMM ttest P 0.05; H0 P >0.5, delta psi <0.01');
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='SE and ASS\nH1 ttest P 0.05; H0 P >0.5, delta psi <0.01');
 for (i in 1:5){
-    if (i %in% c(1:2,4)){d = data[,column[i]];
+    if (i %in% c(1:2,4:5)){d = data[,column[i]];
         }else{d = 1 - data[,column[i]];}
 	tmp=plot_roc(d[data[,12]=='ASS' | data[,12]=='SE'],true[data[,12]=='ASS' | data[,12]=='SE'],color[i]);
     auc=c(auc, tmp[1]); tpr1=c(tpr1,tmp[2]); tpr5=c(tpr5,tmp[3]); tpr10=c(tpr10,tmp[4]);

@@ -38,7 +38,8 @@ for i in range(len(filelist)):
 		if i == 0:
 			this_inc1=elements[12];
 			this_skp1=elements[13];
-			id2p[id]="{:.2E}".format(Decimal(float(elements[4])))
+			#Revision 02/15/19, was variance in the match, changing it to p. Shihao
+			id2p[id]="{:.2E}".format(Decimal(float(elements[6])))
 			#print('this_inc1');print(this_inc1);print('\n');
 		if id in id2p:
 			if this_inc1 in Inc:
@@ -63,7 +64,7 @@ for i in range(len(filelist)):
 ifile=open(sys.argv[2]);
 ilines=ifile.readlines();
 ofile=open(sys.argv[3],'w');
-ofile.write('ASMID\tMatch\tSE\tA3SS\tA5SS\tMXE\tSEFDR5\tA3SSFDR5\tA5SSFDR5\tMXEFDR5\tPmin\n')
+ofile.write('ASMID\tMatch\tSE\tA3SS\tA5SS\tMXE\tSEFDR5\tA3SSFDR5\tA5SSFDR5\tMXEFDR5\tJumP\n')
 IncEvent = []; SkpEvent=[]; thisASM = '';
 #Signficant cutoff for SE, A3SS, A5SS, MXE
 FDRCut = [0.0000631470588356,0.0000289591477134,0.000663722761454,0.000086155609442]
@@ -84,12 +85,13 @@ for i in ilines:
 			eventoutput = '';
 			for j in event:
 				eventoutput += '\t'+str(j);										
-			p = [0,0,0,0]; pmin = 1;
+			p = [0,0,0,0]; pmin = 1; flag = 0;
 			for j in thisEvent:
 				thisoutput += j+',';
 				elements2 = re.findall('[^_]+',j);
 				for k in range(len(type_list)):
 					if elements2[0] == type_list[k]:
+						flag = 1;
 						pmin = min(pmin, float(elements2[-1]))
 						print(float(elements2[-1]));
 						print(min(pmin, float(elements2[-1])));
@@ -103,6 +105,8 @@ for i in ilines:
 				thisoutput = thisoutput[:-1];
 			else:
 				thisoutput = 'NA';
+			if flag == 0:
+				pmin = 'NA'
 			ofile.write(thisoutput+eventoutput+poutput+'\t'+str(pmin)+'\n');
 		#write information for the current ASM
 		thisASM = elements[0];	iscoord = 1;
