@@ -97,7 +97,7 @@ Gold standard H1: GLMM logistic of Flux counts P < 0.005. Gold standard H0: logi
 
 
 
-Gold standard H1: T-test of Flux psi P < 0.05. Gold standard H0: logistic P > 0.5, |delta psi|<1%. T-test calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
+Gold standard H1: T-test of Flux psi P < 0.05. Gold standard H0: T-test P > 0.5, |delta psi|<1%. T-test calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
 
     Rscript roc_ttest.R
 
