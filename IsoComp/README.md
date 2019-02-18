@@ -86,7 +86,7 @@ Gold standard H1: |delta psi| > 10%. Gold standard H0: |delta psi|<1%. Gold stan
     Rscript roc.R
 
 
-[ROC with rMATS-turbo JC](https://drive.google.com/file/d/1CEr6e8QwDqw-ue2nIbk0xBRx4-W_zl-b/view?usp=sharing)
+[ROC with rMATS-turbo JC, Flux delta psi gold standard](https://drive.google.com/file/d/1CEr6e8QwDqw-ue2nIbk0xBRx4-W_zl-b/view?usp=sharing)
 
 
 Gold standard H1: GLMM logistic of Flux counts P < 0.005. Gold standard H0: logistic P > 0.5, |delta psi|<1%. GLMM calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
