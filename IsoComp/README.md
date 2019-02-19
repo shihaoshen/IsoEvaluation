@@ -21,7 +21,7 @@
     BAM=/mnt/isilon/xing_lab/shens/ISO_ReRun/rMATS-iso-bak/Simulation/
     python /mnt/isilon/xing_lab/shens/bin/github/rmats_pipeline/rmats.py --b1 $BAM/bam1.list --b2 $BAM/bam2.list --gtf $GTF --od $OD --tmp $TMP --readLength 101 --cstat 0.01 --task both
 
-#Run leafcutter
+#Run leafcutter (V0.2)
 
     conda activate turbo
     #Convert bam to junction files
@@ -37,7 +37,7 @@
     # Differential splicing analysis.
     /mnt/isilon/xing_lab/shens/bin/github/leafcutter/scripts/leafcutter_ds.R --num_threads 4 leafcutter_output/leafcutter_output_perind_numers.counts.gz simu_reads/groups_file.txt -i 3
     
-#Run JUM
+#Run JUM (V2.0.2)
 
     qsub -pe smp 3 -l h_vmem=20G -l m_mem_free=20G -t 1-6:1 jum_star.sh
     ./jum_star_clean.sh
@@ -45,7 +45,7 @@
     ./jum_star_2ndpass_clean.sh
     qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-1:1 jum.sh
 
-#Run majiq
+#Run majiq (V1.1.7a) and voila (V1.1.9)
 #1. By default majiq only outputs the events likely to have splicing changes, I add 'show-all' option to output all events.
 #2. majiq default posterior probability is for P(|delta psi|>0.2), I change it to P(|delta psi|>0.1).
 
