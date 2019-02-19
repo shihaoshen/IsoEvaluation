@@ -71,7 +71,7 @@
     python findASM.py events.txt eventsp.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2SE.112319.txt
 
     #match the ISO and majiq results in the simulation data
-    python findASM_majiq.py events_majiq.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2majiq.102218.txt
+    python findASM_majiq.py events_majiq_p001.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2majiq_p001.txt
 
     #match the ISO and leafcutter results in the simulation data
     python findASM_leafcutter.py events_leafcutter.txt eventsp_leafcutter.txt /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon ASM2leafcutter.102218.txt
