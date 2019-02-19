@@ -86,22 +86,26 @@ Gold standard H1: |delta psi| > 10%. Gold standard H0: |delta psi|<1%. Gold stan
     Rscript roc.R
 
 
-[ROC with rMATS-turbo JC, Flux delta psi gold standard](https://drive.google.com/file/d/1CEr6e8QwDqw-ue2nIbk0xBRx4-W_zl-b/view?usp=sharing)
+[ROC with majiq delta psi 10%, rMATS-turbo JC, Flux delta psi gold standard](https://drive.google.com/file/d/1CEr6e8QwDqw-ue2nIbk0xBRx4-W_zl-b/view?usp=sharing)
 
+[ROC with majiq delta psi 1%, rMATS-turbo JC, Flux delta psi gold standard](https://drive.google.com/open?id=1hzNcLh1bWaiJ_2FTH27-lp1JsRrLJ3Nw)
 
 Gold standard H1: GLMM logistic of Flux counts P < 0.005. Gold standard H0: logistic P > 0.5, |delta psi|<1%. GLMM calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
 
     Rscript roc_logit.R
 
-[ROC with rMATS-turbo JC, logistic gold standard](https://drive.google.com/open?id=1zDU43xx0j9QB8hLYCxRIz0fA-pUf9cJM)
+[ROC with majiq delta psi 10%, rMATS-turbo JC, logistic gold standard](https://drive.google.com/open?id=1zDU43xx0j9QB8hLYCxRIz0fA-pUf9cJM)
 
-
+[ROC with majiq delta psi 1%, rMATS-turbo JC, logistic gold standard](https://drive.google.com/open?id=1O_dsLrKfOh4ncP6wwREz3PdJvcGlArWR)
 
 Gold standard H1: T-test of Flux psi P < 0.05. Gold standard H0: T-test P > 0.5, |delta psi|<1%. T-test calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
 
     Rscript roc_ttest.R
 
-[ROC with rMATS-turbo JC, ttest gold standard](https://drive.google.com/file/d/17pIHZw17XgQV1Irxp9L-LxN_uz_eIzBS/view?usp=sharing)
+[ROC with majiq delta psi 10%, rMATS-turbo JC, ttest gold standard](https://drive.google.com/file/d/17pIHZw17XgQV1Irxp9L-LxN_uz_eIzBS/view?usp=sharing)
+
+[ROC with majiq delta psi 1%, rMATS-turbo JC, ttest gold standard](https://drive.google.com/open?id=1dZixAxbma8ivQaZdDUp_W3Ply78V6VGr)
+
 
 ![](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc.png)
 
