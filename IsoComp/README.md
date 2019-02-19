@@ -81,7 +81,7 @@
 
 Roc of all modules, modules of SE events, and modules of ASS events. 
 
-Gold standard H1: |delta psi| > 10%. Gold standard H0: |delta psi|<1%. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
+1. Gold standard H1: |delta psi| > 10%. Gold standard H0: |delta psi|<1%. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
 
     Rscript roc.R
 
@@ -90,7 +90,7 @@ Gold standard H1: |delta psi| > 10%. Gold standard H0: |delta psi|<1%. Gold stan
 
 [ROC with majiq delta psi 1%, rMATS-turbo JC, Flux delta psi gold standard](https://drive.google.com/open?id=1hzNcLh1bWaiJ_2FTH27-lp1JsRrLJ3Nw)
 
-Gold standard H1: GLMM logistic of Flux counts P < 0.005. Gold standard H0: logistic P > 0.5, |delta psi|<1%. GLMM calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
+2. Gold standard H1: GLMM logistic of Flux counts P < 0.005. Gold standard H0: logistic P > 0.5, |delta psi|<1%. GLMM calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
 
     Rscript roc_logit.R
 
@@ -98,7 +98,7 @@ Gold standard H1: GLMM logistic of Flux counts P < 0.005. Gold standard H0: logi
 
 [ROC with majiq delta psi 1%, rMATS-turbo JC, logistic gold standard](https://drive.google.com/open?id=1O_dsLrKfOh4ncP6wwREz3PdJvcGlArWR)
 
-Gold standard H1: T-test of Flux psi P < 0.05. Gold standard H0: T-test P > 0.5, |delta psi|<1%. T-test calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
+3. Gold standard H1: T-test of Flux psi P < 0.05. Gold standard H0: T-test P > 0.5, |delta psi|<1%. T-test calculated on the isoform with largest Flux psi difference. Gold standard required sum of module counts of all transcript averaged over all replicates to be >=10.
 
     Rscript roc_ttest.R
 
