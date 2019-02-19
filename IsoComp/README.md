@@ -47,12 +47,12 @@
 
 #Run majiq (V1.1.7a) and voila (V1.1.9)
 #1. By default majiq only outputs the events likely to have splicing changes, I add 'show-all' option to output all events.
-#2. majiq default posterior probability is for P(|delta psi|>0.2), I change it to P(|delta psi|>0.1).
+#2. majiq default posterior probability is for P(|delta psi|>0.2), I change it to P(|delta psi|>0.01).
 
     majiq build ensembl.hg19.gff3 -c settings.ini -j 1 -o output/
     majiq psi output/PC3E-1_STARAligned.out.sort.majiq output/PC3E-2_STARAligned.out.sort.majiq output/PC3E-3_STARAligned.out.sort.majiq output/GS689.LI-1_STARAligned.out.sort.majiq output/GS689.LI-2_STARAligned.out.sort.majiq output/GS689.LI-3_STARAligned.out.sort.majiq -j 2 -o output/ -n g
     majiq deltapsi -grp1 output/PC3E-1_STARAligned.out.sort.majiq output/PC3E-2_STARAligned.out.sort.majiq output/PC3E-3_STARAligned.out.sort.majiq -grp2 output/GS689.LI-1_STARAligned.out.sort.majiq output/GS689.LI-2_STARAligned.out.sort.majiq output/GS689.LI-3_STARAligned.out.sort.majiq -j 2 -o output/ -n pc3e gs689 --default-prior
-    voila deltapsi output/pc3e_gs689.deltapsi.voila -s output/splicegraph.sql -o output_showall_p01/ --show_all --threshold 0.1
+    voila deltapsi output/pc3e_gs689.deltapsi.voila -s output/splicegraph.sql -o output_showall_p001/ --show_all --threshold 0.01
     
 #Calculate true psi for ISO modules from Flux simulation parameters
 #Revision 02/07/19: Require the total read counts of all isoforms that are averaged among the replicates to be greater than 10
