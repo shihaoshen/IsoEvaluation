@@ -118,4 +118,4 @@ Roc of all modules, modules of SE events, and modules of ASS events.
 
 ![](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc.png)
 
-![](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc_SE.png)
+![](https://github.com/shihaoshen/IsoEvaluation/blob/master/IsoComp/rMATS_ISO_Flux_roc_SEASS.png)
