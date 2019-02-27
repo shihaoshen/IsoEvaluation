@@ -10,3 +10,9 @@ qsub -pe smp 1 -l h_vmem=80G -l m_mem_free=80G -t 1-1:1 iso.sh
 #Identify module type (SE or ASS) based on GTF
 
     qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro2.sh
+
+
+#Run ISO on the real PC3E data, using GTF generated from long reads
+```
+qsub -pe smp 1 -l h_vmem=160G -l m_mem_free=160G -t 1-1:1 iso_longreadGTF.sh
+```
