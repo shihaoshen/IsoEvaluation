@@ -1,0 +1,1 @@
+/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/majiq_rerun/output_show_all_p001/pc3e_gs689.deltapsi.tsv

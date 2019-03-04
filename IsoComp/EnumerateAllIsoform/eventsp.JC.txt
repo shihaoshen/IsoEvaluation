@@ -1,0 +1,3 @@
+/mnt/isilon/xing_lab/shens/ISO_ReRun/rMATS-iso-bak/Simulation/rMATS-ISO_Flux_Simulation/od/SE.MATS.JC.txt
+/mnt/isilon/xing_lab/shens/ISO_ReRun/rMATS-iso-bak/Simulation/rMATS-ISO_Flux_Simulation/od/A3SS.MATS.JC.txt
+/mnt/isilon/xing_lab/shens/ISO_ReRun/rMATS-iso-bak/Simulation/rMATS-ISO_Flux_Simulation/od/A5SS.MATS.JC.txt
