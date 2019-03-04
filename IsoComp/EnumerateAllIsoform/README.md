@@ -1,23 +1,25 @@
-#update ISO results when enumerating all isoforms (having isoforms cut from IsoExon output leads to incomplete isoforms);
+Update ISO results when enumerating all isoforms (having isoforms cut from IsoExon output leads to incomplete isoforms);
 
-qsub -pe smp 1 -l h_vmem=80G -l m_mem_free=80G -t 1-1:1 iso_simu.sh
 
-#Update the true psi values based on ISO
+        qsub -pe smp 1 -l h_vmem=80G -l m_mem_free=80G -t 1-1:1 iso_simu.sh
 
-cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/truepsi_iso_allisoforms
-qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro2.sh
-python isopsidiff.py isopsidiff.txt
-python isopsidiff_ttest.py isopsidiff_ttest.txt 1
-python isopsidiff_logit.py isopsidiff_logit.txt 1
-cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/
+Update the true psi values based on ISO
 
-#Match rMATS-turbo, majiq, leafcutter and jum results to ISO modules
-cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_roc/
-isoexon=/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output_noveljuc_allisoforms/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon
-python findASM.py events.txt eventsp.JC.txt $isoexon ASM2SE.JC.txt
-python findASM_majiq.py events_majiq_p001.txt $isoexon ASM2majiq_p001.txt
-python findASM_leafcutter.py events_leafcutter.txt eventsp_leafcutter.txt $isoexon ASM2leafcutter.txt
-python findASM_jum.py events_jum.txt $isoexon ASM2jum.txt
+        cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/truepsi_iso_allisoforms
+        qsub -pe smp 1 -l h_vmem=20G -l m_mem_free=20G -t 1-3:1 GSpsiFromPro2.sh
+        python isopsidiff.py isopsidiff.txt
+        python isopsidiff_ttest.py isopsidiff_ttest.txt 1
+        python isopsidiff_logit.py isopsidiff_logit.txt 1
+        cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/
+
+Match rMATS-turbo, majiq, leafcutter and jum results to ISO modules
+
+        cd /mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_roc/
+        isoexon=/mnt/isilon/xing_lab/shens/ISO_ReRun/Simulation/iso_simu_output_noveljuc_allisoforms/ISO_module/GS689.LI-1_STARAligned.out.sort.bam.IsoExon
+        python findASM.py events.txt eventsp.JC.txt $isoexon ASM2SE.JC.txt
+        python findASM_majiq.py events_majiq_p001.txt $isoexon ASM2majiq_p001.txt
+        python findASM_leafcutter.py events_leafcutter.txt eventsp_leafcutter.txt $isoexon ASM2leafcutter.txt
+        python findASM_jum.py events_jum.txt $isoexon ASM2jum.txt
 
 Roc of all modules, modules of SE events, and modules of ASS events. 
 
