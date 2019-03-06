@@ -52,3 +52,10 @@ Roc of all modules, modules of SE events, and modules of ASS events.
 
 [ROC with majiq delta psi 1%, rMATS-turbo JC delta 1%, DeltaPsi H1 10% + t-test gold standard](https://drive.google.com/open?id=1Fiv1olgv4CUxV2LeH-E0dqf7eaxzZ4Gw)
 
+Compare rMATS-ISO p values of enumerating all isoforms vs. major isoform search (original approach):
+
+        Rscript compare.R
+
+[rMATS-ISO p values of enumerating all isoforms vs. major isoform search (all modules)](https://drive.google.com/open?id=1tXSWVXbYVkr6I7cw5hKtW4uidD06Gzmc)
+
+[rMATS-ISO p values of enumerating all isoforms vs. major isoform search (SE & ASS modules)](https://drive.google.com/open?id=1Lmz0WCz0RGOYn3msC4RJwvGjDgLGBejH)
