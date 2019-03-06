@@ -44,16 +44,29 @@ addlabel = function(label, auc, tpr1, tpr5, tpr10){
 }
 
 #roc for iso
-data=read.table('simu_res_10isocount_v3_glmmTrue.txt',header=T,sep='\t')
-true = rep(NA,length(data[,7]))
-true[abs(data[,7]) > 0.1]=1
-true[abs(data[,7]) < 0.01]=0
-column=c(6,8,9,10,11);
+data=read.table('simu_res_v4_allisoform.txt',header=T,sep='\t')
+#7th for Flux delta psi H1 10% H0 1%
+#also require average counts in both sample groups to be greater than 10
+true_tmp = data$TruePsi_Total10;
+ttest_tmp = data$ttestRegP;
+count1_tmp = data$TotalCountG1;
+count2_tmp = data$TotalCountG2;
+true = rep(NA, length(true_tmp));
+#true[(abs(true_tmp) > 0.1) & (ttest_tmp < 0.05) & (count1_tmp > 10) & (count2_tmp > 10) ]=1
+#true[(abs(true_tmp) < 0.01) & (ttest_tmp > 0.5) & (count1_tmp > 10) & (count2_tmp > 10) ]=0
+true[(abs(true_tmp) > 0.1)  & (mean(count1_tmp + count2_tmp)> 10)]=1
+true[(abs(true_tmp) < 0.01)  & (mean(count1_tmp + count2_tmp)> 10)]=0
+
+#column=c(6,8,9,10,11);
+index=c('iso_p_value','Turbo_Pmin_JC_c01','majiq_Postmax_p001','leafcutter_p_value','JumPmin');
+column=which (colnames(data) %in% index)
+
 color=c('black','red','blue','green','brown');
 title=' | AUC | TPR at 1% FPR | 5% | 10%'
 label=c('rMATS-ISO','rMATS-turbo','majiq','leafcutter','jum');
-pdf('rMATS_ISO_Flux_roc.pdf');
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='Gold Standard Filtered by Total Count >=10');
+#pdf('rMATS_ISO_FluxDeltaPsi10Ttest05_roc.pdf');
+pdf('rMATS_ISO_Flux_roc_total10_turboJC_majiq001.pdf')
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='Gold Standard by DeltaPsi & T-test\nH1 ttest P <0.05, delta psi >10%; H0 P >0.5, delta psi <1%\nFiltered by Total Count >=10');
 
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
 for (i in 1:5){

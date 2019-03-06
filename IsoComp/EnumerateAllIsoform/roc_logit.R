@@ -44,23 +44,30 @@ addlabel = function(label, auc, tpr1, tpr5, tpr10){
 }
 
 #roc for iso
-data=read.table('simu_res_10isocount_v3_glmmTrue.txt',header=T,sep='\t')
+data=read.table('simu_res_v4_allisoform.txt',header=T,sep='\t')
+#7th for Flux delta psi H0 1%, 21th for logit test p values H1 0.5%, H0 50%
+#also require average counts in both sample groups to be greater than 10
+true_tmp = data$TruePsi_Total10;
+ttest_tmp = data$ttestRegP;
+logittest_tmp = data$logitRegP;
+count1_tmp = data$TotalCountG1;
+count2_tmp = data$TotalCountG2;
+true = rep(NA, length(true_tmp));
+#true[(abs(true_tmp) > 0.1) & (ttest_tmp < 0.05) & (count1_tmp > 10) & (count2_tmp > 10) ]=1
+#true[(abs(true_tmp) < 0.01) & (ttest_tmp > 0.5) & (count1_tmp > 10) & (count2_tmp > 10) ]=0
+true[ (logittest_tmp < 0.005) & (mean(count1_tmp + count2_tmp)> 10)]=1
+true[(abs(true_tmp) < 0.01) & (logittest_tmp > 0.5) & (mean(count1_tmp + count2_tmp)> 10)]=0
 
-#Revision 02/13/19, instead of using |delta psi| as gold standard, use glmm logit regression p value
-# true = rep(NA,length(data[,7]))
-# true[abs(data[,7]) > 0.1]=1
-# true[abs(data[,7]) < 0.01]=0
-true = rep(NA,length(data[,21]))
-true[abs(data[,21]) < 0.005 ]=1
-true[(abs(data[,21]) > 0.5) & (abs(data[,7]) < 0.01)]=0
+#column=c(6,8,9,10,11);
+index=c('iso_p_value','Turbo_Pmin_JC_c01','majiq_Postmax_p001','leafcutter_p_value','JumPmin');
+column=which (colnames(data) %in% index)
 
-
-column=c(6,8,9,10,11);
 color=c('black','red','blue','green','brown');
 title=' | AUC | TPR at 1% FPR | 5% | 10%'
 label=c('rMATS-ISO','rMATS-turbo','majiq','leafcutter','jum');
-pdf('rMATS_ISO_Flux_roc.pdf');
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='Gold Standard Filtered by Total Count >=10\nH1 GLMM logistic P 0.005; H0 P >0.5, delta psi <0.01');
+#pdf('rMATS_ISO_FluxDeltaPsi10Ttest05_roc.pdf');
+pdf('rMATS_ISO_FluxLogitRegP005_roc_total10_turboJC_majiq001.pdf')
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='Gold Standard by DeltaPsi & T-test\nH1 ttest P <0.05, delta psi >10%; H0 P >0.5, delta psi <1%\nFiltered by Total Count >=10');
 
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
 for (i in 1:5){
@@ -74,7 +81,7 @@ legend(x=0.3,y=0.3,legend=c(title,newlabel),col=c('white',color),lty=1);
 
 #SE event only
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='SE only\nH1 GLMM logistic P 0.005; H0 P >0.5, delta psi <0.01');
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='SE only');
 for (i in 1:5){
     if (i %in% c(1:2,4:5)){d = data[,column[i]];
         }else{d = 1 - data[,column[i]];}
@@ -87,7 +94,7 @@ legend(x=0.3,y=0.3,legend=c(title,newlabel),col=c('white',color),lty=1);
 
 #ASS event only
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='ASS only\nH1 GLMM logistic P 0.005; H0 P >0.5, delta psi <0.01');
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='ASS only');
 for (i in 1:5){
     if (i %in% c(1:2,4:5)){d = data[,column[i]];
         }else{d = 1 - data[,column[i]];}
@@ -100,7 +107,7 @@ legend(x=0.3,y=0.3,legend=c(title,newlabel),col=c('white',color),lty=1);
 
 #SE + ASS event only
 auc=NULL;tpr1=NULL;tpr5=NULL;tpr10=NULL;
-plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='SE and ASS\nH1 GLMM logistic P 0.005; H0 P >0.5, delta psi <0.01');
+plot(x=c(0,1),y=c(0,1),type='n',xlab='False positive rate',ylab='True positive rate',main='SE and ASS');
 for (i in 1:5){
     if (i %in% c(1:2,4:5)){d = data[,column[i]];
         }else{d = 1 - data[,column[i]];}
